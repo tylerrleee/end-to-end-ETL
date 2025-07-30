@@ -1,0 +1,4 @@
+Airflow Web UI: http://localhost:8080
+Kafka Control Center: http://localhost:9021
+PgAdmin: http://localhost:5050
+Jupyter: http://localhost:8888
