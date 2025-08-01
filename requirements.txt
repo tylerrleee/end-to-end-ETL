@@ -17,7 +17,7 @@ flask-cors
 pymongo
 
 # Airflow (minimum setup)
-apache-airflow==2.7.1
+apache-airflow==2.6.0
 
 
 # Jupyter 

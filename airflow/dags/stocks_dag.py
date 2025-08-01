@@ -1,14 +1,17 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.providers.standard.operators.python import PythonOperator
+#from airflow.providers.standard.operators.python import PythonOperator
+from airflow.operators.python import PythonOperator
 import logging
 import os
 import sys
-#sys.path.append("/opt/airflow/src/")
 
+module_path = os.path.abspath("/Users/tienle/Documents/Coding/end-to-end-ETL/end-to-end/src")
+sys.path.append(module_path)
 
-from src.consumer import mongo_to_postgres
-from outputs.reporting import generate_daily_report
+from consumer import mongo_to_postgres
+from reporting import generate_daily_report
+
 logger = logging.getLogger('dag_logger')
 logging.basicConfig(
     level=logging.INFO,
@@ -26,8 +29,8 @@ default_args = {
 dag = DAG(
     dag_id="stocks_dag",
     default_args=default_args,
-    #schedule='0 9-16 * * 1-5',
-    schedule=None,
+    schedule='0 9-16 * * 1-5',
+    #schedule=None,
     start_date=datetime.now(),
     max_active_runs=1
 )

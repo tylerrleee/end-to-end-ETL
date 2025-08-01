@@ -27,7 +27,7 @@ services:
     build:
       context: .
     ports:
-      - "5000:5000"
+      - "8000:8000"
     volumes:
       - ./exchange.py:/opt/airflow/exchange.py 
     depends_on:
@@ -150,19 +150,15 @@ services:
     ports:
       - "8080:8080"
     command: >
-      bash -c "airflow db init &&
-           airflow users create 
-           --username airflow 
-           --password airflow 
-           --firstname Air 
-           --lastname Flow 
-           --role Admin 
-           --email airflow@example.com &&
-           airflow webserver"
+      bash -c "
+      airflow db migrate &&
+      airflow users create --username airflow --password airflow --firstname Air --lastname Flow --role Admin --email airflow@example.com &&
+      airflow webserver
+      "
     volumes:
-      - ./airflow/dags:/opt/airflow/dags
       - ./src:/opt/airflow/src
       - ./outputs:/opt/airflow/outputs
+      - ./airflow/dags:/opt/airflow/dags
     networks:
       - confluent
 
@@ -207,18 +203,6 @@ services:
     networks:
       - confluent
 
-  jupyter:
-    build:
-      context: .
-      dockerfile: jupyter/Dockerfile
-    depends_on:
-      - spark-master
-    ports:
-      - "8888:8888"
-    volumes:
-      - ./jupyter/notebooks:/home/jovyan/work/notebooks
-    networks:
-      - confluent
   mongodb:
     image: mongo:latest
     container_name: mongodb

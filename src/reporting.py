@@ -6,7 +6,6 @@ import pandas as pd
 
 report_date = date.today()
 
-output_directory = "/airflow/outputs"
 #os.makedirs(output_directory, exist_ok=True)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
@@ -142,6 +141,9 @@ def write_to_csv(filename, data):
     except Exception as e:
         logger.error(f"Failed to write data to {filename}: {e}")
 
+
+##
+output_directory = "/airflow/outputs"
 
 def generate_daily_report():
     cursor, conn = connect_postgres()
