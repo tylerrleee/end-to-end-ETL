@@ -1,4 +1,4 @@
-# FinInsightsDash - Real-Time Financial Anomaly Detection Pipeline (in-production as of 07/15)
+# FinInsightsDash - Real-Time Financial Anomaly Detection Pipeline (in-production as of 08/02)
 <div ">
 
 Python
