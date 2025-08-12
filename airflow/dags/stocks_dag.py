@@ -6,9 +6,11 @@ import logging
 import os
 import sys
 
-module_path = os.path.abspath("/Users/tienle/Documents/Coding/end-to-end-ETL/end-to-end/src")
-sys.path.append(module_path)
 
+sys.path.append("/opt/airflow/src")
+sys.path.append("/opt/airflow/outputs")
+
+#os.chdir('end-to-end/src')
 from consumer import mongo_to_postgres
 from reporting import generate_daily_report
 

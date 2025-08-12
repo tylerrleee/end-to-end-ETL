@@ -157,7 +157,7 @@ services:
       "
     volumes:
       - ./src:/opt/airflow/src
-      - ./outputs:/opt/airflow/outputs
+      - ./outputs/:/opt/airflow/outputs
       - ./airflow/dags:/opt/airflow/dags
     networks:
       - confluent
