@@ -1,5 +1,5 @@
 """
-Retrieve Stock Data from API
+Retrieve MOCK Stock Data From MongoDB
 Sending data to KAFKA
 """
 
@@ -10,8 +10,6 @@ import requests
 from datetime import datetime
 import pandas
 from pyspark.sql.functions import *
-from ignores.api_keys import POLYGON_API_KEY
-from polygon import RESTClient
 
 
 # Logging Set u[ ]
